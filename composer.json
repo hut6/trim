@@ -1,0 +1,14 @@
+{
+	"name": "hut6/trim",
+	"description": "Smart truncating based on Roi Kingon Trimmer",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "HutSix",
+			"homepage": "https://hutsix.com.au"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
