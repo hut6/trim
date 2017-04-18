@@ -16,9 +16,14 @@ Trim works on Craft 2.4.x and Craft 2.5.x.
 
 ## Using Trim
 
--Insert text here-
+    trimit($text, $length = 100, $word = true, $ellipsis = "...", $removeDoubleSpacing = true)
+
+    trimit("insert your string here", 100, true, "...", true)
+    "insert your string here"|trimit(100, true, "...", true)
 
 ## Updates
 
+* 1.0.1
+	* Fixed Twig issues with white space filtering and dealing with HTML entities
 * 1.0.0
 	* Initial release

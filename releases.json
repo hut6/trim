@@ -1,5 +1,13 @@
 [
     {
+        "version": "1.0.1",
+        "downloadUrl": "https://github.com/hut6/trim/archive/master.zip",
+        "date": "2017-04-185T13:00:00+09:30",
+        "notes": [
+            "[Fixed] Twig issues with white space filtering and dealing with HTML entities"
+        ]
+    }
+    {
         "version": "1.0.0",
         "downloadUrl": "https://github.com/hut6/trim/archive/master.zip",
         "date": "2017-04-05T01:36:39.445Z",

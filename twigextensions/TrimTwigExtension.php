@@ -34,7 +34,7 @@ class TrimTwigExtension extends \Twig_Extension
     }
 
     /**
-    * @return array
+     * @return array
      */
     public function getFunctions()
     {
@@ -82,13 +82,13 @@ class TrimTwigExtension extends \Twig_Extension
 
     private function _strip_double_whitespace($text)
     {
-        return preg_replace("/[^\S\n]{2,}/", " ", $text);
+        $text = htmlentities($text, null, null, false);
+        $text = trim(str_replace("&nbsp;", " ", $text));
+        return htmlspecialchars_decode(preg_replace('/\s+/m', ' ', $text));
     }
 
     private function _strip_html_tags($text)
     {
-        $text = htmlspecialchars_decode($text);
-        $text = trim(str_replace("&nbsp;", " ", $text));
         $text = preg_replace(
             array(
                 // Remove invisible content
