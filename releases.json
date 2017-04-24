@@ -1,12 +1,20 @@
 [
     {
+        "version": "1.1.0",
+        "downloadUrl": "https://github.com/hut6/trim/archive/master.zip",
+        "date": "2017-04-245T13:00:00+09:30",
+        "notes": [
+            "[Fixed] Refactoring. Changed default hellipsis. Removed white space and word paramaters."
+        ]
+    },
+    {
         "version": "1.0.1",
         "downloadUrl": "https://github.com/hut6/trim/archive/master.zip",
         "date": "2017-04-185T13:00:00+09:30",
         "notes": [
             "[Fixed] Twig issues with white space filtering and dealing with HTML entities"
         ]
-    }
+    },
     {
         "version": "1.0.0",
         "downloadUrl": "https://github.com/hut6/trim/archive/master.zip",

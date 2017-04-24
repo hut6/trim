@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2017 HutSix
  * @link      https://hutsix.com.au
  * @package   Trim
- * @since     1.0.0
+ * @since     1.1.0
  */
 
 namespace Craft;
@@ -60,7 +60,7 @@ class TrimPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.1.0';
     }
 
     /**

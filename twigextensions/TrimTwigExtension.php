@@ -46,28 +46,21 @@ class TrimTwigExtension extends \Twig_Extension
     /**
      * @param $text
      * @param int $length
-     * @param bool $word
      * @param string $ellipsis
-     * @param bool $spacing
-     * @param bool $removeDoubleSpacing
      * @return string
      */
-    public function trim($text, $length = 100, $word = true, $ellipsis = "...", $removeDoubleSpacing = true)
+    public function trim($text, $length = 100, $ellipsis = "&hellip;")
     {
         $length = (!is_numeric($length)) ? 100 : $length;
 
-        $text = $this->_strip_html_tags($text);
-
-        if ($removeDoubleSpacing) {
-            $text = $this->_strip_double_whitespace($text);
-        }
+        $text = $this->_clean($text);
 
         if(strlen($text) > $length)
         {
-            $text = ( ($word) ? $this->_truncateByWord($text, $length) : substr($text,0,$length) ).$ellipsis;
+            $text = $this->_truncateByWord($text, $length ) . html_entity_decode($ellipsis);
         }
 
-        return $text;
+        return TemplateHelper::getRaw($text);
     }
 
     private function _truncateByWord($str, $length)
@@ -80,14 +73,7 @@ class TrimTwigExtension extends \Twig_Extension
         return preg_replace("/\.\W*$/", "", $str);
     }
 
-    private function _strip_double_whitespace($text)
-    {
-        $text = htmlentities($text, null, null, false);
-        $text = trim(str_replace("&nbsp;", " ", $text));
-        return htmlspecialchars_decode(preg_replace('/\s+/m', ' ', $text));
-    }
-
-    private function _strip_html_tags($text)
+    private function _clean($text)
     {
         $text = preg_replace(
             array(
@@ -116,7 +102,13 @@ class TrimTwigExtension extends \Twig_Extension
                 "\n\$0", "\n\$0", "\n\$0", "\n\$0", "\n\$0", "\n\$0",
                 "\n\$0", "\n\$0", "\n\$0",
             ),
-            $text );
-        return strip_tags($text);
+            $text
+        );
+
+        $text = strip_tags($text);
+
+        $text = html_entity_decode(str_replace("&nbsp;", " ", $text));
+        
+        return trim(preg_replace('/\s\s+/', ' ', $text));
     }
 }
